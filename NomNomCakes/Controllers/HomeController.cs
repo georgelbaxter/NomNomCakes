@@ -13,18 +13,23 @@ namespace NomNomCakes.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Cake()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Your application cake page.";
 
             return View();
         }
-
-        public ActionResult Contact()
+        public ActionResult Icing()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Your application icing page.";
 
             return View();
         }
+        public ActionResult Topping()
+        {
+            ViewBag.Message = "Your application toppings page.";
+
+            return View();
+        }       
     }
 }
