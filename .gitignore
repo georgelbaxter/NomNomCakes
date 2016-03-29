@@ -191,9 +191,9 @@ Backup*/
 UpgradeLog*.XML
 UpgradeLog*.htm
 
-# SQL Server files
-*.mdf
-*.ldf
+# SQL Server files, including these to keep the database consistent
+#*.mdf
+#*.ldf
 
 # Business Intelligence projects
 *.rdl.data
