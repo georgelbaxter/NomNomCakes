@@ -12,11 +12,22 @@ namespace Services
     public class BasketService
     {
         IRepositoryBase<Basket> baskets;
+        private IRepositoryBase<Coupon> coupons;
+        private IRepositoryBase<CouponType> couponTypes;
+        private IRepositoryBase<BasketCoupon> basketCoupons;
+
         public const string BasketSessionName = "eShoppingBasket";
-        public BasketService(IRepositoryBase<Basket> baskets)
+
+        public BasketService(IRepositoryBase<Basket> baskets, IRepositoryBase<Coupon> coupons, IRepositoryBase<BasketCoupon> basketCoupons, IRepositoryBase<CouponType> couponTypes)
         {
             this.baskets = baskets;
+            this.coupons = coupons;
+            this.basketCoupons = basketCoupons;
+            this.couponTypes = couponTypes;
+
         }
+
+        #region Basket methods
         private Basket createNewBasket(HttpContextBase httpContext)
         {
             //create a new basket.
@@ -39,19 +50,21 @@ namespace Services
 
             return basket;
         }
-        public bool AddToBasket(HttpContextBase httpContext, int cakeId, int quantity)
+
+        public bool AddToBasket(HttpContextBase httpContext, int cakeID, int quantity)
         {
             bool success = true;
             Basket basket = GetBasket(httpContext);
-            BasketItem item = basket.BasketItems.FirstOrDefault(i => i.CakeID == cakeId);
+
+            BasketItem item = basket.BasketItems.FirstOrDefault(i => i.CakeID == cakeID);
             if (item == null)
             {
                 item = new BasketItem()
-              {
-                  BasketID = basket.BasketID,
-                  ProductID = productId,
-                  Quantity = quantity
-              };
+                {
+                    BasketID = basket.BasketID,
+                    CakeID = cakeID,
+                    Quantity = quantity
+                };
                 basket.BasketItems.Add(item);
             }
             else
@@ -61,6 +74,7 @@ namespace Services
             baskets.Commit();
             return success;
         }
+
         public Basket GetBasket(HttpContextBase httpContext)
         {
             HttpCookie cookie = httpContext.Request.Cookies.Get(BasketSessionName);
@@ -83,5 +97,56 @@ namespace Services
             }
             return basket;
         }
+        #endregion
+
+        #region Coupon Methods
+        public void AddCoupon(string couponCode, HttpContextBase httpContext)
+        {
+            Basket basket = GetBasket(httpContext);
+            Coupon coupon = coupons.GetAll().FirstOrDefault(c=>c.CouponCode==couponCode);
+            if (coupon!=null)
+            {
+                CouponType couponType = couponTypes.GetById(coupon.CouponTypeId);
+                if (couponType!=null)
+                {
+                    BasketCoupon basketCoupon = new BasketCoupon();
+                    if (couponType.Type=="MoneyOff")
+                    {
+                        MoneyOff(coupon, basket, basketCoupon);
+                    }
+                    if (couponType.Type=="PercentOff")
+                    {
+                        PercentOff(coupon, basket, basketCoupon);
+                    }
+                    baskets.Commit();
+                }//end couponType if
+            }//end coupon if
+        }//end addCoupon
+
+        private void MoneyOff(Coupon coupon, Basket basket, BasketCoupon basketCoupon)
+        {
+            //decimal basketTotal = basket.BasketTotal();
+            //if (coupon.MinSpend < basketTotal)
+            //{
+            //    basketCoupon.Value = coupon.Value * -1;
+            //    basketCoupon.CouponCode = coupon.CouponCode;
+            //    basketCoupon.CouponDescription = coupon.CouponDescription;
+            //    basketCoupon.CouponId = coupon.CouponId;
+            //    basket.AddBasketCoupon(basketCoupon);
+            //}
+        }
+
+        private void PercentOff(Coupon coupon, Basket basket, BasketCoupon basketCoupon)
+        {
+            //if (coupon.MinSpend > basket.BasketTotal())
+            //{
+            //    basketCoupon.Value = (coupon.Value * (basket.BasketTotal() / 100)) * -1;
+            //    basketCoupon.CouponCode = coupon.CouponCode;
+            //    basketCoupon.CouponDescription = coupon.CouponDescription;
+            //    basketCoupon.CouponId = coupon.CouponId;
+            //    basket.AddBasketCoupon(basketCoupon);
+            //}
+        }
+        #endregion
     }
 }
