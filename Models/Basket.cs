@@ -10,5 +10,13 @@ namespace Models
     {
         public Guid BasketID { get; set; }
         public DateTime OrderDate { get; set; }
+        public virtual ICollection<BasketItem>BasketItems {get; set;}
+
+        public Basket()
+        {
+            this.BasketItems = new List<BasketItem>();
+        }
+
+
     }
 }

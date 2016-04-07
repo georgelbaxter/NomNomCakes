@@ -10,7 +10,8 @@ namespace Models
     {
         public int BasketItemID { get; set; }
         public Guid BasketID { get; set; }
-        public int ProductID { get; set; }
+        public int CakeID { get; set; }
+        public virtual Cake Cake { get; set; }
         public int Quantity { get; set; }
     }
 }
