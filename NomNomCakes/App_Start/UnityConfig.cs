@@ -43,6 +43,9 @@ namespace NomNomCakes.App_Start
             container.RegisterType<IRepositoryBase<Icing>, IcingRepository>();
             container.RegisterType<IRepositoryBase<Topping>, ToppingRepository>();
             container.RegisterType<IRepositoryBase<Basket>, BasketRepository>();
+            container.RegisterType<IRepositoryBase<Coupon>, CouponRepository>();
+            container.RegisterType<IRepositoryBase<CouponType>, CouponTypeRepository>();
+            container.RegisterType<IRepositoryBase<BasketCoupon>, BasketCouponRepository>();
 
 
         }

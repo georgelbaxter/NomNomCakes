@@ -1,3 +1,4 @@
+using Contracts;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class CouponType
+    public class CouponType : ICouponType
     {
         public int CouponTypeId { get; set; }
         public string CouponModule { get; set; }

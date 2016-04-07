@@ -1,3 +1,4 @@
+using Contracts;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class BasketCoupon
+    public class BasketCoupon : IBasketCoupon
     {
         public int BasketCouponID { get; set; }
-        public int CouponID { get; set; }
+        public int CouponId { get; set; }
         public Guid BasketID { get; set; }
 
         [MaxLength(10)]
