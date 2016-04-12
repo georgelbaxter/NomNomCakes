@@ -11,7 +11,7 @@ namespace Modules.Coupons.PercentOff
     public class eCoupon : IeCoupon
     {
 
-        public void ProcessCoupon(ICoupon coupon, IBasket basket, IBasketCoupon basketCoupon)
+        public void ProcessVoucher(ICoupon coupon, IBasket basket, IBasketCoupon basketCoupon)
         {
             if (coupon.MinSpend < basket.BasketTotal())
             {

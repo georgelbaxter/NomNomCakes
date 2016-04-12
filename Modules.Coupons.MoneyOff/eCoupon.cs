@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Modules.Coupons.MoneyOff
 {
-    class eCoupon : IeCoupon
+    public class eCoupon : IeCoupon
     {
         public void ProcessVoucher(ICoupon coupon, IBasket basket, IBasketCoupon basketCoupon)
         {
