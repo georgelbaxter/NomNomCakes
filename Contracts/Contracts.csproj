@@ -45,6 +45,8 @@
     <Compile Include="Models\ICake.cs" />
     <Compile Include="Models\ICoupon.cs" />
     <Compile Include="Models\ICouponType.cs" />
+    <Compile Include="Models\IIcing.cs" />
+    <Compile Include="Models\ITopping.cs" />
     <Compile Include="Modules\IeCoupon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IRepositoryBase.cs" />

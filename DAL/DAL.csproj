@@ -53,6 +53,14 @@
     <Compile Include="Migrations\201604121505310_initial.Designer.cs">
       <DependentUpon>201604121505310_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604121512434_priceImage.cs" />
+    <Compile Include="Migrations\201604121512434_priceImage.Designer.cs">
+      <DependentUpon>201604121512434_priceImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604121529442_basketIcingTopping.cs" />
+    <Compile Include="Migrations\201604121529442_basketIcingTopping.Designer.cs">
+      <DependentUpon>201604121529442_basketIcingTopping.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BasketCouponRepository.cs" />
@@ -66,7 +74,9 @@
     <Compile Include="Repositories\ToppingRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -82,6 +92,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201604121505310_initial.resx">
       <DependentUpon>201604121505310_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604121512434_priceImage.resx">
+      <DependentUpon>201604121512434_priceImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604121529442_basketIcingTopping.resx">
+      <DependentUpon>201604121529442_basketIcingTopping.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
