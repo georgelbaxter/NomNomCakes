@@ -49,13 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\DataContext.cs" />
-    <Compile Include="Migrations\201604041941598_initial.cs" />
-    <Compile Include="Migrations\201604041941598_initial.Designer.cs">
-      <DependentUpon>201604041941598_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604072144213_BasketStuff.cs" />
-    <Compile Include="Migrations\201604072144213_BasketStuff.Designer.cs">
-      <DependentUpon>201604072144213_BasketStuff.cs</DependentUpon>
+    <Compile Include="Migrations\201604121505310_initial.cs" />
+    <Compile Include="Migrations\201604121505310_initial.Designer.cs">
+      <DependentUpon>201604121505310_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,14 +66,6 @@
     <Compile Include="Repositories\ToppingRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604041941598_initial.resx">
-      <DependentUpon>201604041941598_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604072144213_BasketStuff.resx">
-      <DependentUpon>201604072144213_BasketStuff.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -90,6 +78,11 @@
       <Project>{01d24395-9656-42e2-be05-cee0bdd811f0}</Project>
       <Name>Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201604121505310_initial.resx">
+      <DependentUpon>201604121505310_initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

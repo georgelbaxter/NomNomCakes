@@ -13,10 +13,25 @@ namespace DAL.Migrations
                     {
                         BasketItemID = c.Int(nullable: false, identity: true),
                         BasketID = c.Guid(nullable: false),
-                        ProductID = c.Int(nullable: false),
+                        CakeID = c.Int(nullable: false),
                         Quantity = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.BasketItemID);
+                .PrimaryKey(t => t.BasketItemID)
+                .ForeignKey("dbo.Cakes", t => t.CakeID, cascadeDelete: true)
+                .ForeignKey("dbo.Baskets", t => t.BasketID, cascadeDelete: true)
+                .Index(t => t.BasketID)
+                .Index(t => t.CakeID);
+
+            CreateTable(
+                "dbo.Cakes",
+                c => new
+                    {
+                        CakeID = c.Int(nullable: false, identity: true),
+                        ImageUrl = c.String(maxLength: 255),
+                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        CakeDescription = c.String(),
+                    })
+                .PrimaryKey(t => t.CakeID);
 
             CreateTable(
                 "dbo.Baskets",
@@ -28,13 +43,21 @@ namespace DAL.Migrations
                 .PrimaryKey(t => t.BasketID);
 
             CreateTable(
-                "dbo.Cakes",
+                "dbo.BasketCoupons",
                 c => new
                     {
-                        CakeID = c.Int(nullable: false, identity: true),
-                        CakeDescription = c.String(),
+                        BasketCouponID = c.Int(nullable: false, identity: true),
+                        CouponId = c.Int(nullable: false),
+                        BasketID = c.Guid(nullable: false),
+                        CouponCode = c.String(maxLength: 10),
+                        CouponType = c.String(maxLength: 100),
+                        Value = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        CouponDescription = c.String(maxLength: 150),
+                        AppliesToProductId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.CakeID);
+                .PrimaryKey(t => t.BasketCouponID)
+                .ForeignKey("dbo.Baskets", t => t.BasketID, cascadeDelete: true)
+                .Index(t => t.BasketID);
 
             CreateTable(
                 "dbo.Coupons",
@@ -64,21 +87,6 @@ namespace DAL.Migrations
                 .PrimaryKey(t => t.CouponTypeId);
 
             CreateTable(
-                "dbo.BasketCoupons",
-                c => new
-                    {
-                        BasketCouponID = c.Int(nullable: false, identity: true),
-                        CouponID = c.Int(nullable: false),
-                        BasketID = c.Guid(nullable: false),
-                        CouponCode = c.String(maxLength: 10),
-                        CouponType = c.String(maxLength: 100),
-                        Value = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        CouponDescription = c.String(maxLength: 150),
-                        AppliesToProductId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.BasketCouponID);
-
-            CreateTable(
                 "dbo.Icings",
                 c => new
                     {
@@ -100,13 +108,19 @@ namespace DAL.Migrations
 
         public override void Down()
         {
+            DropForeignKey("dbo.BasketItems", "BasketID", "dbo.Baskets");
+            DropForeignKey("dbo.BasketCoupons", "BasketID", "dbo.Baskets");
+            DropForeignKey("dbo.BasketItems", "CakeID", "dbo.Cakes");
+            DropIndex("dbo.BasketCoupons", new[] { "BasketID" });
+            DropIndex("dbo.BasketItems", new[] { "CakeID" });
+            DropIndex("dbo.BasketItems", new[] { "BasketID" });
             DropTable("dbo.Toppings");
             DropTable("dbo.Icings");
-            DropTable("dbo.BasketCoupons");
             DropTable("dbo.CouponTypes");
             DropTable("dbo.Coupons");
-            DropTable("dbo.Cakes");
+            DropTable("dbo.BasketCoupons");
             DropTable("dbo.Baskets");
+            DropTable("dbo.Cakes");
             DropTable("dbo.BasketItems");
         }
     }
