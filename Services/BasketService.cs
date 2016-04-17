@@ -78,24 +78,13 @@ namespace Services
         public Basket GetBasket(HttpContextBase httpContext)
         {
             HttpCookie cookie = httpContext.Request.Cookies.Get(BasketSessionName);
-            Basket basket;
+            Basket basket = null;
             Guid basketId;
-            if (cookie != null)//checks if cookie is null
+            if (cookie != null && Guid.TryParse(cookie.Value, out basketId))
             {
-                if (Guid.TryParse(cookie.Value, out basketId))
-                {
-                    basket = baskets.GetById(basketId);
-                }
-                else
-                {
-                    basket = createNewBasket(httpContext);
-                }//end inner if-else
-            }//end outer if
-            else
-            {
-                basket = createNewBasket(httpContext);
+                basket = baskets.GetById(basketId);
             }
-            return basket;
+            return basket ?? createNewBasket(httpContext);
         }
         #endregion
 
