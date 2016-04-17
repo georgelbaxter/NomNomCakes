@@ -77,6 +77,21 @@ namespace Services
             return success;
         }
 
+        public void SetCake(HttpContextBase httpContext, int cakeID)
+        {
+            httpContext.Session["cakeID"] = cakeID;
+        }
+
+        public void SetIcing(HttpContextBase httpContext, int icingID)
+        {
+            httpContext.Session["icingID"] = icingID;
+        }
+
+        public void SetTopping(HttpContextBase httpContext, int toppingID)
+        {
+            httpContext.Session["toppingID"] = toppingID;
+        }
+
         public Basket GetBasket(HttpContextBase httpContext)
         {
             HttpCookie cookie = httpContext.Request.Cookies.Get(BasketSessionName);
