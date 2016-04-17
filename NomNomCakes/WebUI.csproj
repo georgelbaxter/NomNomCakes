@@ -186,7 +186,6 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\CakeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -201,6 +200,22 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\background3.jpg" />
+    <Content Include="Content\Images\defaultCakeBackground.jpg" />
+    <Content Include="Content\Images\icing_coffee.png" />
+    <Content Include="Content\Images\icing_tomatoSauce.png" />
+    <Content Include="Content\Images\icing_vanilla.png" />
+    <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\logo2.png" />
+    <Content Include="Content\Images\sponge_chocolate.png" />
+    <Content Include="Content\Images\sponge_pizza.png" />
+    <Content Include="Content\Images\sponge_top_chocolate.png" />
+    <Content Include="Content\Images\sponge_top_vanilla.png" />
+    <Content Include="Content\Images\sponge_vanilla.png" />
+    <Content Include="Content\Images\topping_chocolate.png" />
+    <Content Include="Content\Images\topping_pizza.png" />
+    <Content Include="Content\Images\topping_strawberry.png" />
+    <Content Include="Content\Images\trianglify-background.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -254,15 +269,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\Cake.cshtml" />
-    <Content Include="Views\Home\Icing.cshtml" />
-    <Content Include="Views\Home\Topping.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\CakeList.cshtml" />
+    <Content Include="Views\Home\CakeBase.cshtml" />
+    <Content Include="Views\Home\Topping.cshtml" />
+    <Content Include="Views\Home\Icing.cshtml" />
+    <Content Include="Views\Home\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Cake\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -1,0 +1,49 @@
+@model IEnumerable<Models.Cake>
+
+@{
+    ViewBag.Title = "Cake Base";
+}
+
+<h2>Which yummy cake base would you like?</h2>
+<div class="container">
+    <div class="row">
+        <div class="cakeDefault">
+            <p class="cakeDefaultText">
+                Pick a base and click next!
+            </p>
+            @foreach (var item in Model)
+            {
+                <div class="row">
+                    <div class="col-sm-6">
+
+                        @*<style>
+                                .cake {
+                                background-image: url(), url();
+                                }
+                            </style>*@
+                    </div>
+                    <div class="col-sm-6 cake">
+                        <img class=" img-responsive" src="~/Content/Images/@Html.DisplayFor(modelItem => item.ImageUrl)">
+                        @Html.DisplayFor(modelItem => item.Price)
+                        @Html.DisplayFor(modelItem => item.CakeDescription)
+
+                        @*<table>
+                                <tr>
+                                    <td>
+                                        <img class="img-responsive" src="~/Content/Images/@Html.DisplayFor(modelItem => item.ImageUrl)">
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Price)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CakeDescription)
+                                    </td>
+                                </tr>
+                            </table>*@
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
