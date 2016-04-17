@@ -6,26 +6,21 @@
 
 <h2>Which yummy cake base would you like?</h2>
 <div class="container">
-    <div class="row">
         <div class="cakeDefault">
             <p class="cakeDefaultText">
                 Pick a base and click next!
             </p>
             @foreach (var item in Model)
             {
-                <div class="row">
-                    <div class="col-sm-6">
 
                         @*<style>
                                 .cake {
                                 background-image: url(), url();
                                 }
                             </style>*@
-                    </div>
-                    <div class="col-sm-6 cake">
+                    <div class="cake">
+                        <p>@Html.DisplayFor(modelItem => item.CakeDescription) ~ @Html.DisplayFor(modelItem => item.Price)</p>
                         <img class=" img-responsive" src="~/Content/Images/@Html.DisplayFor(modelItem => item.ImageUrl)">
-                        @Html.DisplayFor(modelItem => item.Price)
-                        @Html.DisplayFor(modelItem => item.CakeDescription)
 
                         @*<table>
                                 <tr>
@@ -41,9 +36,6 @@
                                 </tr>
                             </table>*@
                     </div>
-                </div>
             }
         </div>
-
-    </div>
 </div>

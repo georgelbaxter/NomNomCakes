@@ -156,17 +156,25 @@ footer {
 
 /*cakes*/
 .cakeDefault {
-    min-height: 333px;
-    background: url(../Content/Images/defaultCakeBackground.jpg) no-repeat;
+    min-height: 350px;
+    background: url(../Content/Images/defaultCakeBackground.png) no-repeat;
+}
+
+.left {
+    width: 400px;
 }
 
 .cake img {
-    width: 30%;
-    height: 30%;
+    width: 20%;
+    height: 20%;
+    margin-left: 100px;
+    padding-bottom: 20px;
 }
+
 
 .cakeDefaultText {
     padding: 50px;
-    height: 300px;
-    width: 429px;
+    z-index: 1030;
+    margin-left: 700px;
+    position: absolute;
 }
