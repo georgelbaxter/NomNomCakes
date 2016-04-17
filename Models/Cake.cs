@@ -15,8 +15,5 @@ namespace Models
         public string ImageUrl { get; set; }
         public decimal Price { get; set; }
         public string CakeDescription { get; set;}
-
-        Basket basket;
-        BasketItem basketItem;
     }
 }

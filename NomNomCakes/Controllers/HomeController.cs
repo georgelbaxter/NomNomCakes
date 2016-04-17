@@ -45,5 +45,21 @@ namespace NomNomCakes.Controllers
             var model = cakes.GetAll();
             return View(model);
         }
+        public ActionResult Icing()
+        {
+            var model = icings.GetAll();
+            return View(model);
+        }
+        public ActionResult Topping()
+        {
+            var model = toppings.GetAll();
+            return View(model);
+        }
+
+        public ActionResult Cart()
+        {
+            var model = basketItem.GetAll();
+            return View(model);
+        }
     }
 }

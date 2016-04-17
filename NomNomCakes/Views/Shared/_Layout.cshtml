@@ -18,7 +18,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="~/Views/Home/Index.cshtml"><img class="img-responsive logo" src="~/Content/Images/logo2.png"></a>
+                <a href="~/Home/Index"><img class="img-responsive logo" src="~/Content/Images/logo2.png"></a>
             </div>
             <div class="nav-items">
             <div class="navbar-collapse collapse">
@@ -40,16 +40,8 @@
             </div>
             <hr />
             <footer>
-                <div class="row">
-                    <div class="col-md-6">
-                        <p>&copy; @DateTime.Now.Year - NomNomCakes</p>
-                    </div>
-                    <div class="col-md-6 adminButton">
-                        @Html.ActionLink("Admin", "Index", "Admin")
-                    </div>
-                </div>
+                <p class="text-center">&copy; @DateTime.Now.Year - NomNomCakes --- <span class="button"> @Html.ActionLink("Admin", "Index", "Admin")</span></p>
             </footer>
-        </div>
         </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
