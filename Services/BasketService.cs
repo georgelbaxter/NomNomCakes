@@ -51,18 +51,20 @@ namespace Services
             return basket;
         }
 
-        public bool AddToBasket(HttpContextBase httpContext, int cakeID, int quantity)
+        public bool AddToBasket(HttpContextBase httpContext, int cakeID, int icingID, int toppingID, int quantity = 1)
         {
             bool success = true;
             Basket basket = GetBasket(httpContext);
 
-            BasketItem item = basket.BasketItems.FirstOrDefault(i => i.CakeID == cakeID);
+            BasketItem item = basket.BasketItems.FirstOrDefault(i => i.CakeID == cakeID && i.IcingID == icingID && i.ToppingID == toppingID);
             if (item == null)
             {
                 item = new BasketItem()
                 {
                     BasketID = basket.BasketID,
                     CakeID = cakeID,
+                    IcingID = icingID,
+                    ToppingID = toppingID,
                     Quantity = quantity
                 };
                 basket.BasketItems.Add(item);
