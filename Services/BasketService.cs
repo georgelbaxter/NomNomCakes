@@ -92,6 +92,26 @@ namespace Services
             httpContext.Session["toppingID"] = toppingID;
         }
 
+        public BasketItem CurrentItem (HttpContextBase httpContext)
+        {
+            // not quite complete, still need to fetch the actual components
+            HttpSessionStateBase session = httpContext.Session;
+            Basket basket = GetBasket(httpContext);
+            BasketItem item = new BasketItem()
+            {
+                BasketID = basket.BasketID,
+                Quantity = 1
+            };
+            if (session["cakeID"] != null)
+                item.CakeID = (int)session["cakeID"];
+            if (session["icingID"] != null)
+                item.IcingID = (int)session["icingID"];
+            if (session["toppingID"] != null)
+                item.ToppingID = (int)session["toppingID"];
+
+            return item;
+        }
+
         public Basket GetBasket(HttpContextBase httpContext)
         {
             HttpCookie cookie = httpContext.Request.Cookies.Get(BasketSessionName);
