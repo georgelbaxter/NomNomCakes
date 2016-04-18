@@ -1,0 +1,42 @@
+@model Models.Cake
+
+@{
+    ViewBag.Title = "Cake Details";
+}
+
+<h2>Cake Details</h2>
+
+<div>
+    <h4>Cake</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CakeDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CakeDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "CakeEdit", new { id = Model.CakeID }) |
+    @Html.ActionLink("Back to List", "CakeList")
+</p>
