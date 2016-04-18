@@ -51,12 +51,12 @@ namespace MidTermSolution.Services
         public Icing Icing { get; set; }
         public Topping Topping { get; set; }
 
-        public CakeBuilder(HttpContextBase httpContext, IRepositoryBase<Cake> cakes, IRepositoryBase<Icing> icings, IRepositoryBase<Topping> toppings)
+        public CakeBuilder(HttpSessionStateBase session, IRepositoryBase<Cake> cakes, IRepositoryBase<Icing> icings, IRepositoryBase<Topping> toppings)
         {
             this.cakes = cakes;
             this.icings = icings;
             this.toppings = toppings;
-            session = httpContext.Session;
+            this.session = session;
 
             if (session["cakeID"] != null)
             {

@@ -1,11 +1,10 @@
 @model IEnumerable<Models.Icing>
 @{
     ViewBag.Title = "Icing";
-    string backgroundString = "url(/Content/Images/sponge_chocolate.png);";
 }
 <style>
     .cakeBuilderImage {
-        background-image: @backgroundString
+        background-image: @ViewBag.CakeBackground
     }
 </style>
 

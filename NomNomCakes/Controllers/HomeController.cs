@@ -1,4 +1,5 @@
 using Contracts;
+using MidTermSolution.Services;
 using Models;
 using Services;
 using System;
@@ -20,6 +21,7 @@ namespace NomNomCakes.Controllers
         IRepositoryBase<CouponType> couponTypes;
         IRepositoryBase<BasketCoupon> basketCoupons;
         BasketService basketService;
+        CakeBuilder cakeBuilder;
         public HomeController(IRepositoryBase<Cake> cakes, IRepositoryBase<Icing> icings, IRepositoryBase<Topping> toppings, IRepositoryBase<BasketItem> basketItem, IRepositoryBase<Basket> baskets, IRepositoryBase<Coupon> coupons, IRepositoryBase<CouponType> couponTypes, IRepositoryBase<BasketCoupon> basketCoupons)
         {
             this.cakes = cakes;
@@ -45,11 +47,26 @@ namespace NomNomCakes.Controllers
             var model = cakes.GetAll();
             return View(model);
         }
+        [HttpPost]
+        public ActionResult PickCake(Cake cake)
+        {
+            cakeBuilder = new CakeBuilder(Session, cakes, icings, toppings);
+            cakeBuilder.CakeID = cake.CakeID;
+            return RedirectToAction("Icing");
+        }
+        public ActionResult PickCake(int id)
+        {
+            return RedirectToAction("Icing");
+        }
+
         public ActionResult Icing()
         {
+            cakeBuilder = new CakeBuilder(Session, cakes, icings, toppings);
+            ViewBag.CakeBackground = buildCakeImage(cakeBuilder);
             var model = icings.GetAll();
             return View(model);
         }
+
         public ActionResult Topping()
         {
             var model = toppings.GetAll();
@@ -60,6 +77,18 @@ namespace NomNomCakes.Controllers
         {
             var model = basketItem.GetAll();
             return View(model);
+        }
+
+        private string buildCakeImage(CakeBuilder cakeBuilder)
+        {
+            string imageURL = string.Empty;
+            if (cakeBuilder.Cake != null)
+                imageURL += "url(/Content/Images/" + cakeBuilder.Cake.ImageUrl + ")";
+            if (cakeBuilder.Icing != null)
+                imageURL += (imageURL == string.Empty ? "" : ", ") + "url(/Content/Images/" + cakeBuilder.Icing.ImageUrl + ")";
+            if (cakeBuilder.Topping != null)
+                imageURL += (imageURL == string.Empty ? "" : ", ") + "url(/Content/Images/" + cakeBuilder.Topping.ImageUrl + ")";
+            return imageURL;
         }
     }
 }
