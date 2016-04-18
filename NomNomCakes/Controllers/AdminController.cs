@@ -4,6 +4,7 @@ using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -216,5 +217,117 @@ namespace NomNomCakes.Controllers
         }
         #endregion
 
+        #region Coupon CRUD
+        public ActionResult CouponList()
+        {
+            var model = coupons.GetAll();
+
+            return View(model);
+        }
+
+        public ActionResult CouponCreate()
+        {
+            var model = new Coupon();
+            ViewBag.couponTypes = couponTypes.GetAll();
+            ViewBag.cakes = cakes.GetAll();
+
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult CouponCreate(Coupon coupon)
+        {
+            coupons.Insert(coupon);
+            coupons.Commit();
+
+            return RedirectToAction("CouponList");
+        }
+
+        public ActionResult CouponEdit(int id)
+        {
+            Coupon coupon = coupons.GetById(id);
+            return View(coupon);
+        }
+        [HttpPost]
+        public ActionResult CouponEdit(Coupon coupon)
+        {
+            coupons.Update(coupon);
+            coupons.Commit();
+            return RedirectToAction("CouponList");
+        }
+        public ActionResult CouponDelete(int id)
+        {
+            Coupon coupon = coupons.GetById(id);
+            if (coupons == null)
+            {
+                return HttpNotFound();
+            }
+            return View(coupon);
+        }
+        [HttpPost, ActionName("CouponDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteCouponConfirm(int id)
+        {
+            coupons.Delete(coupons.GetById(id));
+            coupons.Commit();
+            return RedirectToAction("CouponList");
+        }
+        #endregion
+
+        #region CouponType CRUD
+
+        public ActionResult CouponTypeList()
+        {
+            var model = couponTypes.GetAll();
+            return View(model);
+        }
+
+        public ActionResult CouponTypeCreate()
+        {
+            var model = new CouponType();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult CouponTypeCreate(CouponType couponType)
+        {
+            couponTypes.Insert(couponType);
+            couponTypes.Commit();
+            return RedirectToAction("CouponTypeList");
+        }
+
+        public ActionResult CouponTypeEdit(int id)
+        {
+            CouponType couponType = couponTypes.GetById(id);
+            return View(couponType);
+        }
+
+        [HttpPost]
+        public ActionResult CouponTypeEdit(CouponType couponType)
+        {
+            couponTypes.Update(couponType);
+            couponTypes.Commit();
+
+            return RedirectToAction("CouponTypeList");
+        }
+
+        public ActionResult CouponTypeDelete(int id)
+        {
+            CouponType couponType = couponTypes.GetById(id);
+            if (couponTypes == null)
+            {
+                return HttpNotFound();
+            }
+            return View(couponType);
+        }
+        [HttpPost, ActionName("CouponTypeDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteCouponTypeConfirm(int id)
+        {
+            couponTypes.Delete(couponTypes.GetById(id));
+            couponTypes.Commit();
+            return RedirectToAction("CouponTypeList");
+        }
+
+        #endregion
     }
 }
