@@ -1,6 +1,7 @@
 @model IEnumerable<Models.Cake>
 @{
     ViewBag.Title = "Cake Base";
+    int CakeID = 0;
 }
 <style>
     .cakeBuilderImage {
@@ -22,12 +23,12 @@
 
                         @foreach (var item in Model)
                         {
-                            int CakeID = item.CakeID;
-                            @Html.RadioButtonFor(modelItem => CakeID, item.CakeID, new { id = "cake" + item.CakeID })
                             <div class="cake">
                                 <table>
                                     <tr>
-                                        <td class="tableEdit3"></td>
+                                        <td class="tableEdit3">
+                                            @Html.RadioButtonFor(modelItem => CakeID, item.CakeID, new { id = "cake" + item.CakeID})
+                                        </td>
                                         <td class="tableEdit2">
                                             <img class="img-responsive" src="~/Content/Images/@Html.DisplayFor(modelItem => item.ImageUrl)">
                                         </td>

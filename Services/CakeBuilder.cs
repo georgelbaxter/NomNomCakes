@@ -6,15 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using Models;
+using System.Web.SessionState;
 
-namespace MidTermSolution.Services
+namespace Services
 {
     public class CakeBuilder
     {
         IRepositoryBase<Cake> cakes;
         IRepositoryBase<Icing> icings;
         IRepositoryBase<Topping> toppings;
-        HttpSessionStateBase session;
+        HttpSessionState session;
         private int? cakeID;
         public int? CakeID
         {
@@ -51,7 +52,7 @@ namespace MidTermSolution.Services
         public Icing Icing { get; set; }
         public Topping Topping { get; set; }
 
-        public CakeBuilder(HttpSessionStateBase session, IRepositoryBase<Cake> cakes, IRepositoryBase<Icing> icings, IRepositoryBase<Topping> toppings)
+        public CakeBuilder(HttpSessionState session, IRepositoryBase<Cake> cakes, IRepositoryBase<Icing> icings, IRepositoryBase<Topping> toppings)
         {
             this.cakes = cakes;
             this.icings = icings;
@@ -73,6 +74,7 @@ namespace MidTermSolution.Services
                 toppingID = (int)session["toppingID"];
                 Topping = toppings.GetById(toppingID);
             }
+
         }
 
         public bool Ready()

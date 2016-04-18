@@ -1,5 +1,4 @@
 using Contracts;
-using MidTermSolution.Services;
 using Models;
 using Services;
 using System;
@@ -7,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NomNomCakes.Extensions;
 
 namespace NomNomCakes.Controllers
 {
@@ -33,6 +33,7 @@ namespace NomNomCakes.Controllers
             this.couponTypes = couponTypes;
             this.basketCoupons = basketCoupons;
             basketService = new BasketService(this.baskets, this.coupons, this.basketCoupons, this.couponTypes);
+            cakeBuilder = new CakeBuilder(System.Web.HttpContext.Current.Session, cakes, icings, toppings);
         }
 
 
@@ -50,7 +51,6 @@ namespace NomNomCakes.Controllers
         [HttpPost]
         public ActionResult PickCake(Cake cake)
         {
-            cakeBuilder = new CakeBuilder(Session, cakes, icings, toppings);
             cakeBuilder.CakeID = cake.CakeID;
             return RedirectToAction("Icing");
         }
@@ -61,8 +61,7 @@ namespace NomNomCakes.Controllers
 
         public ActionResult Icing()
         {
-            cakeBuilder = new CakeBuilder(Session, cakes, icings, toppings);
-            ViewBag.CakeBackground = buildCakeImage(cakeBuilder);
+            ViewBag.CakeBackground = cakeBuilder.BuildCakeImage();
             var model = icings.GetAll();
             return View(model);
         }
@@ -79,16 +78,5 @@ namespace NomNomCakes.Controllers
             return View(model);
         }
 
-        private string buildCakeImage(CakeBuilder cakeBuilder)
-        {
-            string imageURL = string.Empty;
-            if (cakeBuilder.Cake != null)
-                imageURL += "url(/Content/Images/" + cakeBuilder.Cake.ImageUrl + ")";
-            if (cakeBuilder.Icing != null)
-                imageURL += (imageURL == string.Empty ? "" : ", ") + "url(/Content/Images/" + cakeBuilder.Icing.ImageUrl + ")";
-            if (cakeBuilder.Topping != null)
-                imageURL += (imageURL == string.Empty ? "" : ", ") + "url(/Content/Images/" + cakeBuilder.Topping.ImageUrl + ")";
-            return imageURL;
-        }
     }
 }
