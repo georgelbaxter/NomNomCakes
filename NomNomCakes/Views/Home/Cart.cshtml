@@ -2,45 +2,47 @@
 @{
     ViewBag.Title = "Cart";
 }
-<h2>Ready to Check-Out your yummy treats?</h2>
-<div class="container">
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-md-6 cakeDefault">
-                <style>
+<div class="box otherPagesBox">
+
+    <h2>Ready to Check-Out your yummy treats?</h2>
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 cakeDefault">
+                    <style>
                         .cake {
                         background-image: url(@Html.DisplayFor(modelItem => item.Topping.ImageUrl)), url(@Html.DisplayFor(modelItem => item.Icing.ImageUrl)), url(@Html.DisplayFor(modelItem => item.Cake.ImageUrl));
                         }
                     </style>
-            </div>
-            <div class="col-md-6">
-                <table class="table">
-                    <tr>
-                        <th>
-                            Your Choices:
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Icing.IcingDescription)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Topping.ToppingDescription)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Cake.CakeDescription)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Quantity)
-                        </td>
-                        <td>
-                            place holder for total cost
-                        </td>
-                    </tr>
-
-                </table>
-            </div>
-        }
+                </div>
+                <div class="col-md-6">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Your Choices:
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Icing.IcingDescription)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Topping.ToppingDescription)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cake.CakeDescription)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td>
+                                place holder for total cost
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            }
+        </div>
     </div>
 </div>

@@ -2,6 +2,8 @@ body {
     padding-top: 30px;
     padding-bottom: 10px;
     font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif;
+        color: #3d270f;
+
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -27,9 +29,11 @@ textarea {
 
 h2 {
     padding: 30px;
+    padding-top: 50px;
     text-align: center;
     font-weight: 600;
     font-size: 250%;
+    margin-top: 0;
 }
 
 .logo {
@@ -60,9 +64,22 @@ hr {
 }
 
 footer {
+    padding-top: 20px;
     padding-bottom: 15px;
     color: #5a3a16;
     font-size: 110%;
+}
+
+.box {
+    width: 100%;
+    background: #f0e1ce;
+    border-bottom: #5a3a16 solid 1px;
+    border-left: #5a3a16 solid 1px;
+    border-right: #5a3a16 solid 1px;
+}
+
+.otherPagesBox {
+    height: 100%;
 }
 
 
@@ -80,6 +97,7 @@ footer {
 
 .buttonNext {
     margin-right: 30px;
+    margin-bottom: 30px;
 }
 
 .buttonNext a {
@@ -205,13 +223,7 @@ footer {
 /*index*/
 
 .index{
-    width: 100%;
-    background: #f0e1ce;
-    height: 500px;
-    border-bottom: #5a3a16 solid 1px;
-    border-left: #5a3a16 solid 1px;
-    border-right: #5a3a16 solid 1px;
-
+    height: 550px;
 }
     .index .indexTopBorder {
         background: url(../Content/Images/decor1.png);
@@ -219,3 +231,50 @@ footer {
         height: 28px;
 
     }
+
+    .index h1 {
+        font-size: 300%;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .index h2 {
+        padding-top: 0;
+    }
+
+    .imgResize img{
+        max-width: 90%;
+        max-height: 90%;
+        padding-bottom: 60px;
+    }
+
+.index .buttonNext a:hover, .index .buttonNext a:hover, .index .buttonNext a:active {
+        background-color: #a7754b;
+                color: #f2cfa1;
+                border-radius:  20px 50px;
+}
+
+/*Admin*/
+.adminButtons .btn{
+    min-width: 200px;
+    border: #5a3a16 solid 2px;
+    background: #a7754b;
+    color: #f2cfa1;
+}
+
+.adminButtons .btn:hover, .adminButtons .btn:focus, .adminButtons .btn:active {
+    background: #f0ad4e;
+    color: #5a3a16;
+}
+
+/*media query*/
+
+/*@media only screen and (max-width: 500px)
+{
+    .cakeDefault {
+        max-height: 175px;
+        max-width: 500px;
+        background: url(../Content/Images/defaultCakeBackground2.png) no-repeat;
+        background-size: 60%;
+    }
+}*/
