@@ -1,7 +1,14 @@
 @model IEnumerable<Models.Cake>
 @{
     ViewBag.Title = "Cake Base";
+    string backgroundString = "url(/Content/Images/sponge_chocolate.png);";
 }
+<style>
+    .cakeBuilderImage {
+        background-image: @backgroundString
+    }
+</style>
+
 <div class="box otherPagesBox">
 
     <h2>Which cake base fancy your taste buds?</h2>
@@ -10,29 +17,32 @@
             <p class="cakeDefaultText">
                 Pick a base and click Next!
             </p>
-            @foreach (var item in Model)
-            {
-                @*<style>
-                        .cake {
-                        background-image: url(), url();
-                        }
-                    </style>*@
-                <div class="cake">
-                    <table>
-                        <tr>
-                            <td class="tableEdit3">
-                                X @*place holder for radio button*@
-                            </td>
-                            <td class="tableEdit2">
-                                <img class="img-responsive" src="~/Content/Images/@Html.DisplayFor(modelItem => item.ImageUrl)">
-                            </td>
-                            <td class="tableEdit1">
-                                <p><span class="subtitle">@Html.DisplayFor(modelItem => item.CakeDescription)</span> ~ @Html.DisplayFor(modelItem => item.Price)</p>
-                            </td>
-                        </tr>
-                    </table>
+            <div class="row">
+                <div class="col-md-6">
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="cake">
+                            <table>
+                                <tr>
+                                    <td class="tableEdit3">
+                                        X @*place holder for radio button*@
+                                    </td>
+                                    <td class="tableEdit2">
+                                        <img class="img-responsive" src="~/Content/Images/@Html.DisplayFor(modelItem => item.ImageUrl)">
+                                    </td>
+                                    <td class="tableEdit1">
+                                        <p><span class="subtitle">@Html.DisplayFor(modelItem => item.CakeDescription)</span> ~ @Html.DisplayFor(modelItem => item.Price)</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    }
                 </div>
-            }
+                <div class="col-md-6">
+                    <div class="cakeBuilderImage"></div>
+                </div>
+            </div>
             <br /><br />
             <div class="buttonNext text-center button">
                 <a href="~/Home/Icing">Next: Choose an Icing!</a>
