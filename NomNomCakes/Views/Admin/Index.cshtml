@@ -3,5 +3,17 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Administration</h2>
 
+<div class="adminButtons">
+    <div>
+        @Html.ActionLink("Cake Base Admin", "CakeList", null, new { @class = "btn btn-lg btn-success" })
+
+        @Html.ActionLink("Icing Admin", "IcingList", null, new { @class = "btn btn-lg btn-primary" })
+
+        @Html.ActionLink("Topping Admin", "ToppingList", null, new { @class = "btn btn-lg btn-warning" })
+        @Html.ActionLink("Coupon Admin", "CouponList", null, new { @class = "btn btn-lg btn-info" })
+        @Html.ActionLink("Coupon Type Admin", "CouponTypeList", null, new { @class = "btn btn-lg btn-primary" })
+
+    </div>
+</div>

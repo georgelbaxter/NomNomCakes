@@ -7,7 +7,7 @@
 <h2>CakeList</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "CakeCreate")
 </p>
 <table class="table">
     <tr>
@@ -23,9 +23,9 @@
             @Html.DisplayFor(modelItem => item.CakeDescription)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CakeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CakeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CakeID })
+            @Html.ActionLink("Edit", "CakeEdit", new { id=item.CakeID }) |
+            @Html.ActionLink("Details", "CakeDetails", new { id = item.CakeID }) |
+            @Html.ActionLink("Delete", "CakeDelete", new { id = item.CakeID })
         </td>
     </tr>
 }
