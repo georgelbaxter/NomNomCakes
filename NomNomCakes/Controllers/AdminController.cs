@@ -106,39 +106,39 @@ namespace NomNomCakes.Controllers
             return View(model);
         }
 
-        public ActionResult CreateIcing()
+        public ActionResult IcingCreate()
         {
             var model = new Icing();
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult CreateIcing(Icing icing)
+        public ActionResult IcingCreate(Icing icing)
         {
             icings.Insert(icing);
             icings.Commit();
             return RedirectToAction("IcingList");
         }
-        public ActionResult EditIcing(int id)
+        public ActionResult IcingEdit(int id)
         {
             Icing icing = icings.GetById(id);
             return View(icing);
         }
         [HttpPost]
-        public ActionResult EditIcing(Icing icing)
+        public ActionResult IcingEdit(Icing icing)
         {
             icings.Update(icing);
             icings.Commit();
             return View(icing);
         }
 
-        public ActionResult DetailsIcing(int id)
+        public ActionResult IcingDetails(int id)
         {
             var icing = icings.GetById(id);
             return View(icing);
         }
 
-        public ActionResult DeleteIcing(int id)
+        public ActionResult IcingDelete(int id)
         {
             Icing icing = icings.GetById(id);
             if (icings == null)
@@ -148,13 +148,13 @@ namespace NomNomCakes.Controllers
             return View(icing);
         }
 
-        [HttpPost, ActionName("DeleteIcing")]
+        [HttpPost, ActionName("IcingDelete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirm(int id)
+        public ActionResult DeleteIcingConfirm(int id)
         {
             icings.Delete(icings.GetById(id));
             icings.Commit();
-            return RedirectToAction("Index");
+            return RedirectToAction("IcingList");
         }
         #endregion
 
@@ -165,39 +165,39 @@ namespace NomNomCakes.Controllers
             return View(model);
         }
 
-        public ActionResult CreateTopping()
+        public ActionResult ToppingCreate()
         {
             var model = new Topping();
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult CreateTopping(Topping topping)
+        public ActionResult ToppingCreate(Topping topping)
         {
             toppings.Insert(topping);
             toppings.Commit();
             return RedirectToAction("ToppingList");
         }
-        public ActionResult EditTopping(int id)
+        public ActionResult ToppingEdit(int id)
         {
             Topping topping = toppings.GetById(id);
             return View(topping);
         }
         [HttpPost]
-        public ActionResult EditTopping(Topping topping)
+        public ActionResult ToppingEdit(Topping topping)
         {
             toppings.Update(topping);
             toppings.Commit();
             return View(topping);
         }
 
-        public ActionResult DetailsTopping(int id)
+        public ActionResult ToppingDetails(int id)
         {
             var topping = toppings.GetById(id);
             return View(topping);
         }
 
-        public ActionResult DeleteTopping(int id)
+        public ActionResult ToppingDelete(int id)
         {
             Topping topping = toppings.GetById(id);
             if (toppings == null)
@@ -205,6 +205,14 @@ namespace NomNomCakes.Controllers
                 return HttpNotFound();
             }
             return View(topping);
+        }
+        [HttpPost, ActionName("ToppingDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteToppingConfirm(int id)
+        {
+            toppings.Delete(toppings.GetById(id));
+            toppings.Commit();
+            return RedirectToAction("ToppingList");
         }
         #endregion
 

@@ -1,0 +1,42 @@
+@model Models.Topping
+
+@{
+    ViewBag.Title = "Topping Details";
+}
+
+<h2>Topping Details</h2>
+
+<div>
+    <h4>Topping</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ToppingDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToppingDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "ToppingEdit", new { id = Model.ToppingID }) |
+    @Html.ActionLink("Back to List", "ToppingList")
+</p>

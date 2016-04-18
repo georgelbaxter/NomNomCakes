@@ -1,0 +1,45 @@
+@model IEnumerable<Models.Topping>
+
+@{
+    ViewBag.Title = "Topping List";
+}
+
+<h2>Topping List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "ToppingCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ToppingDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToppingDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "ToppingEdit", new { id = item.ToppingID }) |
+            @Html.ActionLink("Details", "ToppingDetails", new { id = item.ToppingID }) |
+            @Html.ActionLink("Delete", "ToppingDelete", new { id = item.ToppingID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -285,6 +285,16 @@
     <Content Include="Views\Admin\CakeCreate.cshtml" />
     <Content Include="Views\Admin\CakeDelete.cshtml" />
     <Content Include="Views\Admin\CakeDetails.cshtml" />
+    <Content Include="Views\Admin\IcingList.cshtml" />
+    <Content Include="Views\Admin\IcingCreate.cshtml" />
+    <Content Include="Views\Admin\IcingDelete.cshtml" />
+    <Content Include="Views\Admin\IcingDetails.cshtml" />
+    <Content Include="Views\Admin\IcingEdit.cshtml" />
+    <Content Include="Views\Admin\ToppingCreate.cshtml" />
+    <Content Include="Views\Admin\ToppingDelete.cshtml" />
+    <Content Include="Views\Admin\ToppingDetails.cshtml" />
+    <Content Include="Views\Admin\ToppingEdit.cshtml" />
+    <Content Include="Views\Admin\ToppingList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

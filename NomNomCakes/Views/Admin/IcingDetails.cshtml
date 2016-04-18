@@ -1,0 +1,42 @@
+@model Models.Icing
+
+@{
+    ViewBag.Title = "Icing Details";
+}
+
+<h2>Icing Details</h2>
+
+<div>
+    <h4>Icing</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IcingDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IcingDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "IcingEdit", new { id = Model.IcingID }) |
+    @Html.ActionLink("Back to List", "IcingList")
+</p>

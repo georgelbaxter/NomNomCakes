@@ -1,0 +1,45 @@
+@model IEnumerable<Models.Icing>
+
+@{
+    ViewBag.Title = "Icing List";
+}
+
+<h2>Icing List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "IcingCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IcingDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IcingDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "IcingEdit", new { id=item.IcingID }) |
+            @Html.ActionLink("Details", "IcingDetails", new { id=item.IcingID }) |
+            @Html.ActionLink("Delete", "IcingDelete", new { id=item.IcingID })
+        </td>
+    </tr>
+}
+
+</table>
