@@ -202,8 +202,13 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\background3.jpg" />
     <Content Include="Content\Images\button.png" />
+    <Content Include="Content\Images\decor1.png" />
+    <Content Include="Content\Images\decor2-chocolateCake.png" />
+    <Content Include="Content\Images\decor2-pizza.png" />
+    <Content Include="Content\Images\decor2-strawberry.png" />
     <Content Include="Content\Images\defaultCakeBackground.jpg" />
     <Content Include="Content\Images\defaultCakeBackground.png" />
+    <Content Include="Content\Images\defaultCakeBackground2.png" />
     <Content Include="Content\Images\icing_coffee.png" />
     <Content Include="Content\Images\icing_tomatoSauce.png" />
     <Content Include="Content\Images\icing_vanilla.png" />
@@ -217,7 +222,6 @@
     <Content Include="Content\Images\topping_chocolate.png" />
     <Content Include="Content\Images\topping_pizza.png" />
     <Content Include="Content\Images\topping_strawberry.png" />
-    <Content Include="Content\Images\trianglify-background.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
