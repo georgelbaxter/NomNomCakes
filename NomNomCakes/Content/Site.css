@@ -35,10 +35,8 @@ h2 {
 .logo {
     max-width: 80%;
     max-height: 80%;
-}
-
-.logo {
     padding-left: 30px;
+    padding-bottom: 0;
 }
 
 body {

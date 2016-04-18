@@ -1,57 +1,46 @@
 @model IEnumerable<Models.BasketItem>
-
 @{
     ViewBag.Title = "Cart";
 }
+<h2>Ready to Check-Out your yummy treats?</h2>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 cakeDefault">
+                <style>
+                        .cake {
+                        background-image: url(@Html.DisplayFor(modelItem => item.Topping.ImageUrl)), url(@Html.DisplayFor(modelItem => item.Icing.ImageUrl)), url(@Html.DisplayFor(modelItem => item.Cake.ImageUrl));
+                        }
+                    </style>
+            </div>
+            <div class="col-md-6">
+                <table class="table">
+                    <tr>
+                        <th>
+                            Your Choices:
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Icing.IcingDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Topping.ToppingDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cake.CakeDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td>
+                            place holder for total cost
+                        </td>
+                    </tr>
 
-<h2>Cart</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Cake.ImageUrl)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Icing.IcingDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Topping.ToppingDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BasketID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cake.ImageUrl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Icing.IcingDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Topping.ToppingDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BasketID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BasketItemID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BasketItemID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BasketItemID })
-        </td>
-    </tr>
-}
-
-</table>
+                </table>
+            </div>
+        }
+    </div>
+</div>
