@@ -4,7 +4,6 @@
     ViewBag.Title = "Cart";
 }
 <div class="box otherPagesBox">
-
     <h2>Ready to Check-Out your yummy treats?</h2>
     <div class="container">
         <div class="row">
@@ -24,10 +23,10 @@
                             <th>
                                 Topping
                             </th>
-                            <th>
+                            <th colspan="2">
                                 Quantity
                             </th>
-                            <th>
+                            <th class="text-right">
                                 Total Cost
                             </th>
                         </tr>
@@ -52,12 +51,57 @@
                                 @item.Quantity
                             </td>
                             <td>
+                                @Html.ActionLink("Edit","EditBasketQuantity")
+                            </td>
+                            <td class="text-right">
                                 @item.TotalCost().ToString("C")
                             </td>
                         </tr>
                     }
+                    @foreach (var item in Model.BasketCoupons)
+                    {
+                        <tr>
+                            <td colspan="6" class="text-right">
+                                @item.CouponDescription
+                            </td>
+                            <td class="text-right">
+                                @item.Value.ToString("C")
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="6" class="text-right">
+                            <b>Total Cost</b>
+                        </td>
+                        <td class="text-right">
+                            @Model.BasketTotal().ToString("C")
+                        </td>
+                    </tr>
                 </table>
             </div>
+        </div>
+        <div class="row">
+            @using (Html.BeginForm("AddBasketCoupon", "Home"))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="control-label col-md-2">Enter Coupon Code: </div>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" id="CouponCode" name="CouponCode" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Add Coupon" class="btn btn-warning" />
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </div>

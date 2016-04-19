@@ -24,9 +24,11 @@ namespace Models
 
         public decimal BasketTotal()
         {
-            decimal? total = (from item in BasketItems
-                              select (int?)item.Quantity * item.Cake.Price).Sum();
-            return total ?? decimal.Zero;
+            decimal total = (from item in BasketItems
+                              select (int?)item.Quantity * (item.Cake.Price + item.Icing.Price + item.Topping.Price)).Sum() ?? 0;
+            total += (from item in BasketCoupons
+                      select item.Value).Sum();
+            return total;
         }
 
         public decimal BasketItemCount()

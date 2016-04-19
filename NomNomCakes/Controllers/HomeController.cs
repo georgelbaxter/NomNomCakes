@@ -113,6 +113,12 @@ namespace NomNomCakes.Controllers
             string model = cakeBuilder.BuildCakeImage();
             return View(model: model);
         }
+        //add coupons
+        public ActionResult AddBasketCoupon(string couponCode)
+        {
+            basketService.AddCoupon(couponCode, this.HttpContext);
 
+            return RedirectToAction("Cart");
+        }
     }
 }
