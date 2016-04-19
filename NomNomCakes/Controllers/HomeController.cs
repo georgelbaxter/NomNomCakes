@@ -69,10 +69,25 @@ namespace NomNomCakes.Controllers
             return RedirectToAction("YourCake");
         }
 
+        public ActionResult AddToCart()
+        {
+            if (cakeBuilder.Ready())
+            {
+                basketService.AddToBasket(this.HttpContext, cakeBuilder.CakeID ?? 0, cakeBuilder.IcingID ?? 0, cakeBuilder.ToppingID ?? 0);
+                cakeBuilder.Clear();
+            }
+            return RedirectToAction("Cart");
+        }
+
         public ActionResult YourCake()
         {
-            var model = cakeBuilder.CurrentItem();
-            return View(model);
+            ActionResult result;
+            // If user hasn't picked all 3, send them back to the start
+            if (cakeBuilder.Ready())
+                result = View(cakeBuilder.CurrentItem());
+            else
+                result = RedirectToAction("CakeBase");
+            return result;
         }
 
         public ActionResult Icing()

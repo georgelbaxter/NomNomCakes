@@ -26,6 +26,9 @@ namespace Models
         public virtual ITopping ITopping { get { return _topping as ITopping; } set { _topping = value as Topping; } }
         public virtual Topping Topping { get { return _topping; } set { _topping = value; } }
 
-
+        public decimal TotalCost()
+        {
+            return Cake.Price + Icing.Price + Topping.Price;
+        }
     }
 }

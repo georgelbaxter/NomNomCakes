@@ -1,58 +1,80 @@
+@using NomNomCakes.Extensions
 @model Models.BasketItem
-
 @{
-    ViewBag.Title = "YourCake";
+    ViewBag.Title = "Your Cake";
 }
+<div class="box otherPagesBox">
+    <h2>Check out your cake!</h2>
+    <div class="container">
+        <div class="cakeDefault">
+            <form action="@Url.Action("PickTopping")" method="post">
+                <p class="cakeDefaultText">
 
-<h2>YourCake</h2>
+                </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="cake">
+                            <table>
+                                <tr>
+                                    <td class="tableEdit3"></td>
+                                    <td class="tableEdit2"></td>
+                                    <td class="tableEdit1">
+                                        <p>
+                                            @Html.ActionLink("[Edit]", "CakeBase")
+                                            <span class="subtitle">Base:</span> @Model.Cake.CakeDescription
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tableEdit3"></td>
+                                    <td class="tableEdit2"></td>
+                                    <td class="tableEdit1">
+                                        <p>
+                                            @Html.ActionLink("[Edit]", "Icing")
+                                            <span class="subtitle">Icing:</span> @Model.Icing.IcingDescription
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tableEdit3"></td>
+                                    <td class="tableEdit2"></td>
+                                    <td class="tableEdit1">
+                                        <p>
+                                            @Html.ActionLink("[Edit]", "Topping")
+                                            <span class="subtitle">Topping:</span> @Model.Topping.ToppingDescription
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <div class="buttonNext button">
+                                            @Html.ActionLink("Add to Cart", "AddToCart", new { }, new { @class = "button" })
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <div class="buttonNext button">
+                                            @Html.ActionLink("Start Again", "CakeBase", new { }, new { @class = "button" })
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="cakeBuilderImage" style="background-image: @Model.BuildCakeImage()"></div>
+                    </div>
+                </div>
+                <br /><br />
 
-<div>
-    <h4>BasketItem</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.BasketID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BasketID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CakeID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CakeID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IcingID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IcingID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ToppingID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ToppingID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-
-    </dl>
+                <br />
+            </form>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.BasketItemID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

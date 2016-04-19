@@ -273,6 +273,7 @@ footer {
         color: #5a3a16;
     }
 
+
 /*media query*/
 
 /*@media only screen and (max-width: 500px)
@@ -284,3 +285,11 @@ footer {
         background-size: 60%;
     }
 }*/
+
+.cartcake {
+    width: 150px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: auto;
+}
