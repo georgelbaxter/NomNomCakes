@@ -88,7 +88,7 @@ footer {
     margin: 0;
 }
 
-    .button a {
+    .button a, .buttonNext button {
         color: #5a3a16;
         font-weight: 900;
         font-size: 110%;
@@ -99,7 +99,7 @@ footer {
     margin-bottom: 30px;
 }
 
-    .buttonNext a {
+    .buttonNext a, .buttonNext button {
         background-color: #a7754b;
         font-size: 150%;
         padding: 5px 20px;
@@ -108,7 +108,7 @@ footer {
         color: #f2cfa1;
     }
 
-        .buttonNext a:hover {
+        .buttonNext a:hover, .buttonNext button:hover {
             background: none;
         }
 
@@ -160,7 +160,7 @@ footer {
 
     .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus,
     .navbar-inverse .navbar-nav > li > a:active, .navbar-inverse .navbar-nav .last a:hover,
-    .navbar-inverse .navbar-nav .last a:focus, .navbar-inverse .navbar-nav .last a:active, .buttonNext a:hover {
+    .navbar-inverse .navbar-nav .last a:focus, .navbar-inverse .navbar-nav .last a:active, .buttonNext a:hover, .buttonNext button:hover {
         color: #a46f43;
         text-decoration: none;
     }
@@ -254,7 +254,7 @@ footer {
     padding-bottom: 60px;
 }
 
-.index .buttonNext a:hover, .index .buttonNext a:hover, .index .buttonNext a:active {
+.index .buttonNext a:hover, .index .buttonNext a:hover, .index .buttonNext a:active, .index .buttonNext button:hover, .index .buttonNext button:active {
     background-color: #a7754b;
     color: #f2cfa1;
     border-radius: 20px 50px;

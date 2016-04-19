@@ -3,18 +3,14 @@
     ViewBag.Title = "Cake Base";
     int CakeID = 0;
 }
-<style>
-    .cakeBuilderImage {
-        background-image: @ViewBag.CakeBackground
-    }
-</style>
+@Html.Action("CakeStyle")
 
 <div class="box otherPagesBox">
 
-    <h2>Which cake base fancy your taste buds?</h2>
+    <h2>Which cake base fancies your taste buds?</h2>
     <div class="container">
         <div class="cakeDefault">
-            <form action="/Home/PickCake" method="post">
+            <form action="@Url.Action("PickCake")" method="post">
                 <p class="cakeDefaultText">
                     Pick a base and click Next!
                 </p>
@@ -46,8 +42,8 @@
                     </div>
                 </div>
                 <br /><br />
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                <div class="buttonNext text-center button">
+                    <button type="submit" class="text-center button">Next: Choose an Icing!</button>
                 </div>
                 <br />
             </form>

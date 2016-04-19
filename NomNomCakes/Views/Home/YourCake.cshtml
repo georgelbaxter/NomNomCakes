@@ -1,0 +1,58 @@
+@model Models.BasketItem
+
+@{
+    ViewBag.Title = "YourCake";
+}
+
+<h2>YourCake</h2>
+
+<div>
+    <h4>BasketItem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BasketID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BasketID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CakeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CakeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IcingID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IcingID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ToppingID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToppingID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BasketItemID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

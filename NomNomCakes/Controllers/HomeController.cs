@@ -54,14 +54,29 @@ namespace NomNomCakes.Controllers
             cakeBuilder.CakeID = cake.CakeID;
             return RedirectToAction("Icing");
         }
-        public ActionResult PickCake(int id)
+
+        [HttpPost]
+        public ActionResult PickIcing(Icing icing)
         {
-            return RedirectToAction("Icing");
+            cakeBuilder.IcingID = icing.IcingID;
+            return RedirectToAction("Topping");
+        }
+
+        [HttpPost]
+        public ActionResult PickTopping(Topping topping)
+        {
+            cakeBuilder.ToppingID = topping.ToppingID;
+            return RedirectToAction("YourCake");
+        }
+
+        public ActionResult YourCake()
+        {
+            var model = cakeBuilder.CurrentItem();
+            return View(model);
         }
 
         public ActionResult Icing()
         {
-            ViewBag.CakeBackground = cakeBuilder.BuildCakeImage();
             var model = icings.GetAll();
             return View(model);
         }
@@ -74,8 +89,14 @@ namespace NomNomCakes.Controllers
 
         public ActionResult Cart()
         {
-            var model = basketItem.GetAll();
+            var model = basketService.GetBasket(this.HttpContext);
             return View(model);
+        }
+
+        public ActionResult CakeStyle()
+        {
+            string model = cakeBuilder.BuildCakeImage();
+            return View(model: model);
         }
 
     }

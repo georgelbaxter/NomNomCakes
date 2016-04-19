@@ -1,51 +1,49 @@
 @model IEnumerable<Models.Icing>
 @{
     ViewBag.Title = "Icing";
+    int IcingID = 0;
 }
-<style>
-    .cakeBuilderImage {
-        background-image: @ViewBag.CakeBackground
-    }
-</style>
-
+@Html.Action("CakeStyle")
 <div class="box otherPagesBox">
     <h2>Pick your Icing!</h2>
     <div class="container">
         <div class="cakeDefault">
-            <p class="cakeDefaultText">
-                Pick an icing and click Next!
-            </p>
-            <div class="row">
-                <div class="col-md-6">
-                    @foreach (var item in Model)
-                    {
+            <form action="@Url.Action("PickIcing")" method="post">
+                <p class="cakeDefaultText">
+                    Pick an icing and click Next!
+                </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        @foreach (var item in Model)
+                        {
 
-                        <div class="cake">
-                            <table>
-                                <tr>
-                                    <td class="tableEdit3">
-                                        X @*place holder for radio button*@
-                                    </td>
-                                    <td class="tableEdit2">
-                                        <img class="img-responsive" src="~/Content/Images/@Html.DisplayFor(modelItem => item.ImageUrl)">
-                                    </td>
-                                    <td class="tableEdit1">
-                                        <p><span class="subtitle">@Html.DisplayFor(modelItem => item.IcingDescription)</span> ~ @Html.DisplayFor(modelItem => item.Price)</p>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    }
+                            <div class="cake">
+                                <table>
+                                    <tr>
+                                        <td class="tableEdit3">
+                                            @Html.RadioButtonFor(modelItem => IcingID, item.IcingID, new { id = "icing" + item.IcingID })
+                                        </td>
+                                        <td class="tableEdit2">
+                                            <img class="img-responsive" src="~/Content/Images/@Html.DisplayFor(modelItem => item.ImageUrl)">
+                                        </td>
+                                        <td class="tableEdit1">
+                                            <p><span class="subtitle">@Html.DisplayFor(modelItem => item.IcingDescription)</span> ~ @Html.DisplayFor(modelItem => item.Price)</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        }
+                    </div>
+                    <div class="col-md-6">
+                        <div class="cakeBuilderImage"></div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="cakeBuilderImage"></div>
+                <br /><br />
+                <div class="buttonNext text-center button">
+                    <button type="submit" class="text-center button">Next: Choose a Topping!</button>
                 </div>
-            </div>
-            <br /><br />
-            <div class="buttonNext text-center button">
-                <a href="~/Home/Topping">Next: Choose a Topping!</a>
-            </div>
-            <br />
+                <br />
+            </form>
         </div>
     </div>
 </div>

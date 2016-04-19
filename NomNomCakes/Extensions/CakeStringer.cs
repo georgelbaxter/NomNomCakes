@@ -17,9 +17,9 @@ namespace NomNomCakes.Extensions
             if (cakeBuilder.Cake != null)
                 cakeUrl = cakeBuilder.Cake.ImageUrl;
             if (cakeBuilder.Icing != null)
-                cakeUrl = cakeBuilder.Icing.ImageUrl;
+                icingUrl = cakeBuilder.Icing.ImageUrl;
             if (cakeBuilder.Topping != null)
-                cakeUrl = cakeBuilder.Topping.ImageUrl;
+                toppingUrl = cakeBuilder.Topping.ImageUrl;
             return buildCakeImage(cakeUrl, icingUrl, toppingUrl);
         }
 
@@ -31,12 +31,12 @@ namespace NomNomCakes.Extensions
         static string buildCakeImage(string cakeUrl, string icingUrl, string toppingUrl)
         {
             string imageURL = string.Empty;
-            if (cakeUrl != "")
-                imageURL += "url(/Content/Images/" + cakeUrl + ")";
+            if (toppingUrl != "")
+                imageURL += "url(/Content/Images/" + toppingUrl + ")";
             if (icingUrl != "")
                 imageURL += (imageURL == string.Empty ? "" : ", ") + "url(/Content/Images/" + icingUrl + ")";
-            if (toppingUrl != "")
-                imageURL += (imageURL == string.Empty ? "" : ", ") + "url(/Content/Images/" + toppingUrl + ")";
+            if (cakeUrl != "")
+                imageURL += (imageURL == string.Empty ? "" : ", ") + "url(/Content/Images/" + cakeUrl + ")";
             return imageURL;
         }
     }

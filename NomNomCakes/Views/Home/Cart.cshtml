@@ -1,4 +1,4 @@
-@model IEnumerable<Models.BasketItem>
+@model Models.Basket
 @{
     ViewBag.Title = "Cart";
 }
@@ -7,12 +7,12 @@
     <h2>Ready to Check-Out your yummy treats?</h2>
     <div class="container">
         <div class="row">
-            @foreach (var item in Model)
+            @foreach (var item in Model.BasketItems)
             {
                 <div class="col-md-6 cakeDefault">
                     <style>
                         .cake {
-                        background-image: url(@Html.DisplayFor(modelItem => item.Topping.ImageUrl)), url(@Html.DisplayFor(modelItem => item.Icing.ImageUrl)), url(@Html.DisplayFor(modelItem => item.Cake.ImageUrl));
+                        background-image: url(@item.Topping.ImageUrl), url(@item.Icing.ImageUrl), url(@item.Cake.ImageUrl);
                         }
                     </style>
                 </div>
