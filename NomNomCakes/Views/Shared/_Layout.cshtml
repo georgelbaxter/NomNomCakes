@@ -37,8 +37,23 @@
             <div class="body-content">
                 @RenderBody()
             </div>
-            <footer>
-                <p class="text-center">&copy; @DateTime.Now.Year - NomNomCakes --- <span class="button"> @Html.ActionLink("Admin", "Index", "Admin")</span></p>
+            <footer class="text-center">
+                &copy; @DateTime.Now.Year - NomNomCakes ---
+                <div class="dropup" style="position:relative">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Admin
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li>@Html.ActionLink("Cake Base", "CakeList", "Admin")</li>
+                        <li>@Html.ActionLink("Icing", "IcingList", "Admin")</li>
+                        <li>@Html.ActionLink("Topping", "ToppingList", "Admin")</li>
+                        <li>@Html.ActionLink("Coupon", "CouponList", "Admin")</li>
+                        <li>@Html.ActionLink("Coupon Type", "CouponTypeList", "Admin")</li>
+                        <li role="separator" class="divider"></li>
+                        <li>@Html.ActionLink("Admin Portal", "Index", "Admin")</li>
+                    </ul>
+                </div>
             </footer>
         </div>
         @Scripts.Render("~/bundles/jquery")

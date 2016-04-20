@@ -314,3 +314,7 @@ footer {
 .modal-content {
     background: #f0e1ce;
 }
+
+div.dropup {
+    display: inline;
+}
