@@ -245,6 +245,8 @@ namespace NomNomCakes.Controllers
         public ActionResult CouponEdit(int id)
         {
             Coupon coupon = coupons.GetById(id);
+            ViewBag.couponTypes = couponTypes.GetAll();
+            ViewBag.cakes = cakes.GetAll();
             return View(coupon);
         }
         [HttpPost]

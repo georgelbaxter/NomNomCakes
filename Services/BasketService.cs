@@ -177,7 +177,7 @@ namespace Services
         private void MoneyOff(Coupon coupon, Basket basket, BasketCoupon basketCoupon)
         {
             decimal basketTotal = basket.BasketTotal();
-            if (coupon.MinSpend < basketTotal)
+            if (coupon.MinSpend <= basketTotal)
             {
                 basketCoupon.Value = coupon.Value * -1;
                 basketCoupon.CouponCode = coupon.CouponCode;
@@ -189,7 +189,7 @@ namespace Services
 
         private void PercentOff(Coupon coupon, Basket basket, BasketCoupon basketCoupon)
         {
-            if (coupon.MinSpend > basket.BasketTotal())
+            if (coupon.MinSpend <= basket.BasketTotal())
             {
                 basketCoupon.Value = (coupon.Value * (basket.BasketTotal() / 100)) * -1;
                 basketCoupon.CouponCode = coupon.CouponCode;
