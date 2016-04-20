@@ -17,22 +17,22 @@ namespace NomNomCakes.Controllers
         IRepositoryBase<Icing> icings;
         IRepositoryBase<Topping> toppings;
         IRepositoryBase<Basket> baskets;
-        IRepositoryBase<BasketItem> basketItem;
+        IRepositoryBase<BasketItem> basketItems;
         IRepositoryBase<Coupon> coupons;
         IRepositoryBase<CouponType> couponTypes;
         IRepositoryBase<BasketCoupon> basketCoupons;
         BasketService basketService;
-        public AdminController(IRepositoryBase<Cake> cakes, IRepositoryBase<Icing> icings, IRepositoryBase<Topping> toppings, IRepositoryBase<BasketItem> basketItem, IRepositoryBase<Basket> baskets, IRepositoryBase<Coupon> coupons, IRepositoryBase<CouponType> couponTypes, IRepositoryBase<BasketCoupon> basketCoupons)
+        public AdminController(IRepositoryBase<Cake> cakes, IRepositoryBase<Icing> icings, IRepositoryBase<Topping> toppings, IRepositoryBase<BasketItem> basketItems, IRepositoryBase<Basket> baskets, IRepositoryBase<Coupon> coupons, IRepositoryBase<CouponType> couponTypes, IRepositoryBase<BasketCoupon> basketCoupons)
         {
             this.cakes = cakes;
             this.icings = icings;
             this.toppings = toppings;
             this.baskets = baskets;
-            this.basketItem = basketItem;
+            this.basketItems = basketItems;
             this.coupons = coupons;
             this.couponTypes = couponTypes;
             this.basketCoupons = basketCoupons;
-            basketService = new BasketService(this.baskets, this.coupons, this.basketCoupons, this.couponTypes);
+            basketService = new BasketService(this.basketItems, this.baskets, this.coupons, this.basketCoupons, this.couponTypes);
         }
 
         // GET: Admin

@@ -28,7 +28,7 @@ namespace Models
 
         public decimal TotalCost()
         {
-            return Cake.Price + Icing.Price + Topping.Price;
+            return (Cake.Price + Icing.Price + Topping.Price) * Quantity;
         }
     }
 }

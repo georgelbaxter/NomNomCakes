@@ -16,23 +16,23 @@ namespace NomNomCakes.Controllers
         IRepositoryBase<Icing> icings;
         IRepositoryBase<Topping> toppings;
         IRepositoryBase<Basket> baskets;
-        IRepositoryBase<BasketItem> basketItem;
+        IRepositoryBase<BasketItem> basketItems;
         IRepositoryBase<Coupon> coupons;
         IRepositoryBase<CouponType> couponTypes;
         IRepositoryBase<BasketCoupon> basketCoupons;
         BasketService basketService;
         CakeBuilder cakeBuilder;
-        public HomeController(IRepositoryBase<Cake> cakes, IRepositoryBase<Icing> icings, IRepositoryBase<Topping> toppings, IRepositoryBase<BasketItem> basketItem, IRepositoryBase<Basket> baskets, IRepositoryBase<Coupon> coupons, IRepositoryBase<CouponType> couponTypes, IRepositoryBase<BasketCoupon> basketCoupons)
+        public HomeController(IRepositoryBase<Cake> cakes, IRepositoryBase<Icing> icings, IRepositoryBase<Topping> toppings, IRepositoryBase<BasketItem> basketItems, IRepositoryBase<Basket> baskets, IRepositoryBase<Coupon> coupons, IRepositoryBase<CouponType> couponTypes, IRepositoryBase<BasketCoupon> basketCoupons)
         {
             this.cakes = cakes;
             this.icings = icings;
             this.toppings = toppings;
             this.baskets = baskets;
-            this.basketItem = basketItem;
+            this.basketItems = basketItems;
             this.coupons = coupons;
             this.couponTypes = couponTypes;
             this.basketCoupons = basketCoupons;
-            basketService = new BasketService(this.baskets, this.coupons, this.basketCoupons, this.couponTypes);
+            basketService = new BasketService(this.basketItems, this.baskets, this.coupons, this.basketCoupons, this.couponTypes);
             cakeBuilder = new CakeBuilder(System.Web.HttpContext.Current.Session, cakes, icings, toppings);
         }
 
@@ -78,6 +78,27 @@ namespace NomNomCakes.Controllers
             }
             return RedirectToAction("Cart");
         }
+
+        [HttpPost]
+        public ActionResult SetQuantity(BasketItem item)
+        {
+            basketService.SetQuantity(this.HttpContext, item.BasketItemID, item.Quantity);
+            return RedirectToAction("Cart");
+        }
+
+        [HttpPost]
+        public ActionResult DeleteBasketItem(int id)
+        {
+            basketService.DeleteFromBasket(this.HttpContext, id);
+            return RedirectToAction("Cart");
+        }
+
+        public ActionResult ClearBasket()
+        {
+            basketService.Clear(this.HttpContext);
+            return RedirectToAction("Cart");
+        }
+
 
         public ActionResult YourCake()
         {

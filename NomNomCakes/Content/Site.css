@@ -293,3 +293,14 @@ footer {
     background-repeat: no-repeat;
     margin: auto;
 }
+
+.confirmcake {
+    width: 150px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.modal-content {
+    background: #f0e1ce;
+}

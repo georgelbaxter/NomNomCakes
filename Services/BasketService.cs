@@ -12,19 +12,20 @@ namespace Services
     public class BasketService
     {
         IRepositoryBase<Basket> baskets;
+        IRepositoryBase<BasketItem> basketItems;
         private IRepositoryBase<Coupon> coupons;
         private IRepositoryBase<CouponType> couponTypes;
         private IRepositoryBase<BasketCoupon> basketCoupons;
 
         public const string BasketSessionName = "eShoppingBasket";
 
-        public BasketService(IRepositoryBase<Basket> baskets, IRepositoryBase<Coupon> coupons, IRepositoryBase<BasketCoupon> basketCoupons, IRepositoryBase<CouponType> couponTypes)
+        public BasketService(IRepositoryBase<BasketItem> basketItems, IRepositoryBase<Basket> baskets, IRepositoryBase<Coupon> coupons, IRepositoryBase<BasketCoupon> basketCoupons, IRepositoryBase<CouponType> couponTypes)
         {
             this.baskets = baskets;
             this.coupons = coupons;
             this.basketCoupons = basketCoupons;
             this.couponTypes = couponTypes;
-
+            this.basketItems = basketItems;
         }
 
         #region Basket methods
@@ -88,6 +89,65 @@ namespace Services
             }
             return basket ?? createNewBasket(httpContext);
         }
+
+        public bool DeleteFromBasket(HttpContextBase httpContext, int basketItemId)
+        {
+            bool success = true;
+            Basket basket = GetBasket(httpContext);
+
+            if (!basket.BasketItems.Select(i => i.BasketItemID).Contains(basketItemId))
+            {
+                success = false;
+            }
+            else
+            {
+                basketItems.Delete(basketItemId);
+                basketItems.Commit();
+            }
+            return success;
+        }
+
+        public void Clear(HttpContextBase httpContext)
+        {
+            Basket basket = GetBasket(httpContext);
+
+            foreach (BasketItem item in basket.BasketItems)
+            {
+                basketItems.Delete(item.BasketItemID);
+            }
+            foreach (BasketCoupon coupon in basket.BasketCoupons)
+            {
+                basketCoupons.Delete(coupon.BasketCouponID);
+            }
+            baskets.Delete(basket.BasketID);
+            baskets.Commit();
+        }
+
+        public bool SetQuantity(HttpContextBase httpContext, int basketItemID, int quantity)
+        {
+            bool success = true;
+            Basket basket = GetBasket(httpContext);
+
+            BasketItem item = basket.BasketItems.FirstOrDefault(i => i.BasketItemID == basketItemID);
+            if (item != null)
+            {
+                if (quantity > 0)
+                {
+                    item.Quantity = quantity;
+                }
+                else
+                {
+                    basketItems.Delete(item.BasketItemID);
+                    basketItems.Commit();
+                }
+                baskets.Commit();
+            }
+            else
+                success = false;
+
+            return success;
+        }
+
         #endregion
 
         #region Coupon Methods
