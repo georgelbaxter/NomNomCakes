@@ -180,14 +180,24 @@ footer {
 .cakeDefault {
     min-height: 350px;
     min-width: 1080px;
-    background: url(../Content/Images/defaultCakeBackground2.png) no-repeat;
+    /*background: url(../Content/Images/defaultCakeBackground2.png) no-repeat;*/
+}
+
+.cakeWrapper {
+    min-height: 250px;
+    min-width: 300px;
+    background: url(../Content/Images/defaultCakeBackground.jpg) no-repeat;
+    background-size: contain;
+    position: relative;
 }
 
 .cakeBuilderImage {
     height: 151px;
     background-size: 237px 151px;
     background-repeat: no-repeat;
-    margin: 100px 0 0 177px;
+    position: relative;
+    left: 54px;
+    top: 35px;
 }
 
 .left {

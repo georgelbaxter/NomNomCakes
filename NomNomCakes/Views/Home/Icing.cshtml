@@ -9,9 +9,6 @@
     <div class="container">
         <div class="cakeDefault">
             <form action="@Url.Action("PickIcing")" method="post">
-                <p class="cakeDefaultText">
-                    Pick an icing and click Next!
-                </p>
                 <div class="row">
                     <div class="col-md-6">
                         @foreach (var item in Model)
@@ -35,7 +32,10 @@
                         }
                     </div>
                     <div class="col-md-6">
-                        <div class="cakeBuilderImage"></div>
+                        <h4>Pick an icing and click Next!</h4>
+                        <div class="cakeWrapper">
+                            <div class="cakeBuilderImage"></div>
+                        </div>
                     </div>
                 </div>
                 <br /><br />
